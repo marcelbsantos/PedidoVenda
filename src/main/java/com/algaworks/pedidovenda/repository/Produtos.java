@@ -8,6 +8,7 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.NoResultException;
 
 import com.algaworks.pedidovenda.model.Produto;
+import com.algaworks.pedidovenda.util.jpa.Transactional;
 
 public class Produtos implements Serializable {
 
@@ -17,14 +18,7 @@ public class Produtos implements Serializable {
 	private EntityManager manager;
 
 	public Produto guardar(Produto produto) {
-		EntityTransaction trx = manager.getTransaction();
-		trx.begin();
-		
-		produto = manager.merge(produto);
-		
-		trx.commit();
-		
-		return produto;
+		return manager.merge(produto);
 	}
 
 	public Produto porSKU(String sku) {
