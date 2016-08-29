@@ -59,12 +59,29 @@ public class CadastroProdutoBean implements Serializable {
 	public CadastroProdutoBean() {
 		limpar();
 	}
+
+	public Produto getProduto() {
+		return produto;
+	}
+	
+	public void setProduto(Produto produto) {
+		this.produto = produto;
+		
+		if(this.produto != null){
+			this.categoriaPai = this.produto.getCategoria().getCategoriaPai();
+		}
+	}
+	
 	
 	public void inicializar(){
 		System.out.println("Inicializando...");
 		
 		if(FacesUtil.isNotPostBack()){			
 			categoriasRaizes = categorias.raizes();
+		}
+		
+		if(this.categoriaPai != null){
+			carregarSubcategorias();
 		}
 	}
 	
@@ -83,9 +100,8 @@ public class CadastroProdutoBean implements Serializable {
 		limpar();
 		FacesUtil.addInfoMessage("Produto salvo com sucesso!");
 	}
-
-	public Produto getProduto() {
-		return produto;
+	
+	public boolean isEditando() {
+		return this.produto.getId() != null;
 	}
-	//aquiaaaaaaaaaaaaaaaaaaaaaaaaa
 }
