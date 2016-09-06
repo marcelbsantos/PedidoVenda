@@ -45,6 +45,10 @@ public class CadastroPedidoBean implements Serializable {
 		if(FacesUtil.isNotPostBack()) {
 			this.vendedores = this.usuarios.vendedores();
 		}
+		
+		if(this.pedido == null) {
+			limpar();
+		}
 	}
 	
 	public void limpar() {
@@ -70,8 +74,15 @@ public class CadastroPedidoBean implements Serializable {
 		return pedido;
 	}
 	
+	public void setPedido(Pedido pedido) {
+		this.pedido = pedido;
+	}
+	
 	public List<Usuario> getVendedores() {
 		return vendedores;
 	}
 
+	public boolean isEditando() {
+		return this.pedido.getId() != null;
+	}
 }
