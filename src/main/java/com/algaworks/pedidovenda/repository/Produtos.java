@@ -72,4 +72,9 @@ public class Produtos implements Serializable {
 			throw new NegocioException("Prouto não pode ser excuído.");
 		}
 	}
+
+	public List<Produto> porNome(String nome) {
+		return manager.createQuery("from Produto where upper(nome) like :nome", Produto.class)
+				.setParameter("nome", nome.toUpperCase() + "%").getResultList();
+	}
 }
