@@ -214,7 +214,7 @@ public class Pedido implements Serializable {
 
 	@Transient
 	public BigDecimal getValorSubTotal() {
-		return this.getValorTotal().subtract(this.getValorFrete()).add(this.valorDesconto);
+		return this.getValorTotal().subtract(this.getValorFrete()).add(this.getValorDesconto());
 	}
 
 	public void recalcularValorTotal() {
@@ -278,12 +278,7 @@ public class Pedido implements Serializable {
 	private boolean isEmissivel() {
 		return this.isExistente() && this.isOrcamento();
 	}
-
-	@Transient
-	public boolean isNaoCancelavel() {
-		return !this.isCancelavel();
-	}
-
+	
 	@Transient
 	private boolean isCancelavel() {
 		return this.isExistente() && !this.isCancelado();
@@ -292,6 +287,21 @@ public class Pedido implements Serializable {
 	@Transient
 	private boolean isCancelado() {
 		return StatusPedido.CANCELADO.equals(this.getStatus());
+	}
+
+	@Transient
+	public boolean isNaoCancelavel() {
+		return !this.isCancelavel();
+	}
+	
+	@Transient
+	private boolean isAlteravel() {
+		return this.isOrcamento();
+	}	
+
+	@Transient
+	public boolean isNaoAlteravel() {
+		return !this.isAlteravel();
 	}
 
 }

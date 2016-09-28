@@ -9,6 +9,7 @@ import javax.inject.Named;
 
 import com.algaworks.pedidovenda.model.Pedido;
 import com.algaworks.pedidovenda.service.EmissaoPedidoService;
+import com.algaworks.pedidovenda.util.jpa.Transactional;
 import com.algaworks.pedidovenda.util.jsf.FacesUtil;
 
 @Named
