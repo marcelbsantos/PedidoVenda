@@ -1,0 +1,32 @@
+sql aula 15.4
+
+SELECT * FROM cursojavaee.usuario;
+
+insert into cursojavaee.usuario(email, nome, senha)
+values('joao@algaworks.com', 'João das Couves', '123');
+
+insert into cursojavaee.usuario(email, nome, senha)
+values('manoel@algaworks.com', 'Manoel Benedito', '123');
+
+---------------------------------------------------------
+SELECT * FROM cursojavaee.grupo;
+
+insert into cursojavaee.grupo(descricao, nome)
+values('Administradores', 'Administradores');
+
+insert into cursojavaee.grupo(descricao, nome)
+values('Vendedores', 'Vendedores');
+
+insert into cursojavaee.grupo(descricao, nome)
+values('Auxiliares', 'Auxiliares');
+------------------------------------------------------------
+SELECT * FROM cursojavaee.usuario_grupo;
+
+insert into cursojavaee.usuario_grupo(usuario_id, grupo_id)
+values(1,1);
+
+insert into cursojavaee.usuario_grupo(usuario_id, grupo_id)
+values(2,2);
+
+insert into cursojavaee.usuario_grupo(usuario_id, grupo_id)
+values(3,3);
