@@ -54,58 +54,86 @@ ORDER BY
 		</band>
 	</title>
 	<columnHeader>
-		<band height="22" splitType="Stretch">
+		<band height="27" splitType="Stretch">
 			<staticText>
 				<reportElement x="0" y="0" width="111" height="20" uuid="02ed6bb7-c8ab-404a-83ff-71a698aca271"/>
-				<text><![CDATA[data_criacao]]></text>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Data de Criação]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="111" y="0" width="111" height="20" uuid="e3a795a1-9237-48cc-849b-2133f7c5b160"/>
-				<text><![CDATA[nome_vendedor]]></text>
+				<reportElement x="144" y="1" width="189" height="20" uuid="6cac8e79-6c6d-422c-a9c5-330913cafd8b"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cliente]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="222" y="0" width="111" height="20" uuid="6cac8e79-6c6d-422c-a9c5-330913cafd8b"/>
-				<text><![CDATA[nome_cliente]]></text>
+				<reportElement x="444" y="0" width="111" height="20" uuid="3ab98087-25b9-41e6-99ee-5186345d6c0b"/>
+				<textElement textAlignment="Right">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Valor Total]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="333" y="0" width="111" height="20" uuid="3ab98087-25b9-41e6-99ee-5186345d6c0b"/>
-				<text><![CDATA[valor_total]]></text>
+				<reportElement x="94" y="0" width="50" height="20" uuid="e946c75e-b4a7-4c13-8eab-ed98a3daed71"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Código]]></text>
 			</staticText>
+			<line>
+				<reportElement x="0" y="20" width="555" height="1" uuid="20ba6037-3d6f-4806-b634-318108b9ef8c"/>
+			</line>
 			<staticText>
-				<reportElement x="444" y="0" width="111" height="20" uuid="e946c75e-b4a7-4c13-8eab-ed98a3daed71"/>
-				<text><![CDATA[codigo]]></text>
+				<reportElement x="333" y="0" width="111" height="20" uuid="e3a795a1-9237-48cc-849b-2133f7c5b160"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Vendedor]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
 		<band height="22" splitType="Stretch">
-			<textField>
+			<textField pattern="dd/MM/yyyy">
 				<reportElement x="0" y="0" width="111" height="20" uuid="0eb135f9-3732-4bcd-be73-9d28478cfba3"/>
 				<textFieldExpression><![CDATA[$F{data_criacao}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="111" y="0" width="111" height="20" uuid="2c2a5470-9eda-4aef-a932-55bdf1d08d3f"/>
-				<textFieldExpression><![CDATA[$F{nome_vendedor}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="222" y="0" width="111" height="20" uuid="e40a0714-e484-47ad-b0e8-6f872c926b74"/>
+				<reportElement x="144" y="1" width="189" height="20" uuid="e40a0714-e484-47ad-b0e8-6f872c926b74"/>
 				<textFieldExpression><![CDATA[$F{nome_cliente}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement x="333" y="0" width="111" height="20" uuid="98a9117f-8db4-44ca-b07a-b2211f6e4bec"/>
+			<textField pattern="¤ #,##0.00">
+				<reportElement x="444" y="0" width="111" height="20" uuid="98a9117f-8db4-44ca-b07a-b2211f6e4bec"/>
+				<textElement textAlignment="Right"/>
 				<textFieldExpression><![CDATA[$F{valor_total}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="444" y="0" width="111" height="20" uuid="c19844f8-cb04-43c6-b8ae-86de477bdfb3"/>
+				<reportElement x="94" y="0" width="50" height="20" uuid="c19844f8-cb04-43c6-b8ae-86de477bdfb3"/>
 				<textFieldExpression><![CDATA[$F{codigo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="333" y="0" width="111" height="20" uuid="2c2a5470-9eda-4aef-a932-55bdf1d08d3f"/>
+				<textFieldExpression><![CDATA[$F{nome_vendedor}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
+	<pageFooter>
+		<band height="25">
+			<textField>
+				<reportElement x="444" y="5" width="111" height="20" uuid="2ce76091-924c-403e-8aa2-32d4b391cc38"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[" Página " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
 	<summary>
 		<band height="42" splitType="Stretch">
-			<textField>
-				<reportElement x="444" y="10" width="111" height="20" uuid="12de8c98-36c9-4331-a512-8a936ef84fde"/>
-				<textElement>
+			<textField pattern="¤ #,##0.00">
+				<reportElement x="405" y="10" width="150" height="20" uuid="12de8c98-36c9-4331-a512-8a936ef84fde"/>
+				<textElement textAlignment="Right">
 					<font isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$V{valor_total_1}]]></textFieldExpression>
