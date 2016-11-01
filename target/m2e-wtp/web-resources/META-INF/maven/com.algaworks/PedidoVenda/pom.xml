@@ -158,6 +158,14 @@
 		</dependency>
 		<!-- Spring Security fim-->
 		
+		<!-- Jasper Report -->
+		<dependency>
+		  <groupId>net.sf.jasperreports</groupId>
+		  <artifactId>jasperreports</artifactId>
+		  <version>5.1.2</version>
+		  <scope>compile</scope>		  
+		</dependency>
+		
 	</dependencies>
 
 	<build>
