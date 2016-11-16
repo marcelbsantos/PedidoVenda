@@ -13,6 +13,7 @@ import javax.inject.Named;
 import org.primefaces.model.chart.Axis;
 import org.primefaces.model.chart.AxisType;
 import org.primefaces.model.chart.CategoryAxis;
+import org.primefaces.model.chart.ChartSeries;
 import org.primefaces.model.chart.LineChartModel;
 import org.primefaces.model.chart.LineChartSeries;
 
@@ -38,14 +39,18 @@ public class GraficoPedidosCriadosBean {
 	
 	public void preRender(){
 		this.model = new LineChartModel();
+		this.model.setTitle("Pedidos Criados");
+		this.model.setLegendPosition("e");
+		this.model.setAnimate(true);
 		
-		createLineModels();
+		this.model.getAxes().put(AxisType.X, new CategoryAxis("Data"));
+//		createLineModels();
 		
-//		adicionarSerie("Todos os pedidos", null);
-//		adicionarSerie("Meus pedidos", usuarioLogado.getUsuario());
+		adicionarSerie("Todos os pedidos", null);
+		adicionarSerie("Meus pedidos", usuarioLogado.getUsuario());
 	}
 	
-	private void createLineModels() {
+/*	private void createLineModels() {
 		
         adicionarSerie("Todos os pedidos", null);
         adicionarSerie("Meus pedidos", usuarioLogado.getUsuario());
@@ -61,7 +66,7 @@ public class GraficoPedidosCriadosBean {
         yAxis.setLabel("Total de Vendas");
         yAxis.setMin(0);
 //        yAxis.setMax(200);
-    }
+    }*/
      
 	
 	
@@ -69,8 +74,9 @@ public class GraficoPedidosCriadosBean {
 		
 		Map<Date, BigDecimal> valoresPorData = this.pedidos.valoresTotaisPorData(30, criadoPor);
 		
-		LineChartSeries series = new LineChartSeries();
-		series.setLabel(rotulo);
+		ChartSeries series = new ChartSeries(rotulo);
+//		LineChartSeries series = new LineChartSeries();
+//		series.setLabel(rotulo);
 		
 		for (Date data : valoresPorData.keySet()) {
 			series.set(DATE_FORMAT.format(data), valoresPorData.get(data));
